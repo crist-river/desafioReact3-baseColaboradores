@@ -47,6 +47,12 @@ const App = () => {
           {alert.msg !== "" && <Alerta alert={alert} />}
         </Col>
       </Row>
+      <Row>
+        <Col>
+          <p>Cristopher Rivera</p>
+          <p>Lucas Suarez</p>
+        </Col>
+      </Row>
     </Container>
   );
 };
