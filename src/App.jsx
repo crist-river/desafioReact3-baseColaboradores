@@ -27,8 +27,9 @@ const App = () => {
 
   return (
     <Container>
+      <h1> Desafio lista de colaboradores </h1>
       <Row>
-        <Col xs={12}>
+        <Col xs={6}>
           <Buscador buscador={buscador} setBuscador={setBuscador} />
         </Col>
       </Row>
