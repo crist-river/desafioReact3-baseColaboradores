@@ -2,10 +2,10 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const Formulario = ({setColaboradores}) => {
+const Formulario = ({colaboradores, setColaboradores}) => {
   const [nuevoColaborador, setNuevoColaborador] = useState({
     nombre: "",
-    correo: "",
+    email: "",
     edad: "",
     cargo: "",
     telefono: "",
@@ -13,11 +13,15 @@ const Formulario = ({setColaboradores}) => {
 
   const envioFormulario = (e) => {
       e.preventDefault() 
+
+      const colaborador_id={... nuevoColaborador, id: Date.now()}
+      setColaboradores([...colaboradores, colaborador_id])
   }
 
   const cambioNuevoColaborador = (e) => {
     setNuevoColaborador({... nuevoColaborador, [e.target.name]:e.target.value})
   };
+
   return (
     <Form onSubmit={envioFormulario}>
       <Form.Group className="mb-3" controlId="formBasicNombre">
@@ -54,6 +58,7 @@ const Formulario = ({setColaboradores}) => {
         <Form.Control
           type="text"
           name="cargo"
+          placeholder="Cargo colaborador"
           value={nuevoColaborador.cargo}
           onChange={cambioNuevoColaborador}
         />
