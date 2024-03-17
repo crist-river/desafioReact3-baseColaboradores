@@ -7,7 +7,7 @@ const Listado = ({ colaboradores }) => {
         <tr>
           <th>#id</th>
           <th>Nombre</th>
-          <th>Correo</th>
+          <th>Email</th>
           <th>Edad</th>
           <th>Cargo</th>
           <th>Telefono</th>
@@ -19,7 +19,7 @@ const Listado = ({ colaboradores }) => {
             <tr key={colaborador.id}>
               <td>{colaborador.id}</td>
               <td>{colaborador.nombre}</td>
-              <td>{colaborador.correo}</td>
+              <td>{colaborador.email}</td>
               <td>{colaborador.edad}</td>
               <td>{colaborador.cargo}</td>
               <td>{colaborador.telefono}</td>

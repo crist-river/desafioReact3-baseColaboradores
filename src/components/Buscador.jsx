@@ -1,16 +1,23 @@
+const Buscador = ({buscador, setBuscador}) => {
+
+  const buscar = (e) => {
+    let value = e.target.value
+    setBuscador(value)
 
 
-const Buscador = () => {
+
+  }
   return (
-  
-        <form className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="F" aria-label="Search"/>
-        <button className="btn btn-outline-light" type="submit">Search</button>
-      </form>
-    
-    
-   
-
+    <div className=" d-flex m-2" role="search">
+      <input
+        className="form-control me-2"
+        type="search"
+        placeholder="Busca un colaborador"
+        aria-label="Search"
+        value={buscador}
+        onChange={buscar}
+      />
+    </div>
   );
 };
 

@@ -12,19 +12,32 @@ const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores);
   const [alert, setAlert] = useState({ msg: "", color: "" });
   const [buscador, setBuscador] = useState("");
+
+  const filteredColaboradores = colaboradores.filter((colaborador) => {
+    if (
+      colaborador.nombre.toLowerCase().includes(buscador.toLowerCase()) ||
+      colaborador.email.toLowerCase().includes(buscador.toLowerCase()) ||
+      colaborador.edad.toLowerCase().includes(buscador.toLowerCase()) ||
+      colaborador.cargo.toLowerCase().includes(buscador.toLowerCase()) ||
+      colaborador.telefono.toLowerCase().includes(buscador.toLowerCase())
+    ) {
+      return colaborador;
+    }
+  });
+
   return (
     <Container>
       <Row>
-        <Col>
+        <Col xs={12}>
           <Buscador buscador={buscador} setBuscador={setBuscador} />
         </Col>
       </Row>
       <Row>
-        <Col>
-          <Listado colaboradores={colaboradores} />
+        <Col xs={12} lg={9}>
+          <Listado colaboradores={filteredColaboradores} />
         </Col>
 
-        <Col>
+        <Col xs={12} lg={3}>
           <Formulario
             setAlert={setAlert}
             setColaboradores={setColaboradores}

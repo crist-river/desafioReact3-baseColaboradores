@@ -2,8 +2,9 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const Formulario = ({colaboradores, setColaboradores, setAlert}) => {
+const Formulario = ({ colaboradores, setColaboradores, setAlert }) => {
   const [nuevoColaborador, setNuevoColaborador] = useState({
+    id:"",
     nombre: "",
     email: "",
     edad: "",
@@ -11,20 +12,41 @@ const Formulario = ({colaboradores, setColaboradores, setAlert}) => {
     telefono: "",
   });
 
-  const envioFormulario = (e) => {
-      e.preventDefault() 
-
-      const colaborador_id={... nuevoColaborador, id: Date.now()}
-      setColaboradores([...colaboradores, colaborador_id])
-      setAlert({msg:'Usuario agregado correctamente', color:'success'})
-  }
-
   const cambioNuevoColaborador = (e) => {
-    setNuevoColaborador({... nuevoColaborador, [e.target.name]:e.target.value})
+    setNuevoColaborador({
+      ...nuevoColaborador,
+      [e.target.name]: e.target.value,
+    });
   };
+
+  const envioFormulario = (e) => {
+    e.preventDefault();
+
+    const colaborador_id = { ...nuevoColaborador, id: Date.now() };
+    setColaboradores([...colaboradores, colaborador_id]);
+
+
+    if(
+    nuevoColaborador.id !== "" ||
+    nuevoColaborador.nombre === "" ||
+    nuevoColaborador.email === "" ||
+    nuevoColaborador.edad === "" ||
+    nuevoColaborador.cargo === "" ||
+    nuevoColaborador.telefono === ""){
+      setAlert({
+              msg: "completa todos los campos requeridos",
+            color: "danger", })
+    }else{
+      setAlert({ msg: "Usuario agregado correctamente", color: "success" });
+      {cambioNuevoColaborador}
+    }
+  };
+
+
 
   return (
     <Form onSubmit={envioFormulario}>
+      <h4>Agregar colaborador</h4>
       <Form.Group className="mb-3" controlId="formBasicNombre">
         <Form.Control
           type="text"
