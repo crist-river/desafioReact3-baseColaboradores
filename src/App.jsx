@@ -6,29 +6,32 @@ import Listado from "./components/Listado";
 import Alerta from "./components/Alerta";
 import { BaseColaboradores } from "./BaseColaboradores";
 import { useState } from "react";
-import { Container } from "react-bootstrap";
-import { Col } from "react-bootstrap";
-import { Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores);
+  const [alert, setAlert] = useState({ msg: "", color: "" });
+  const [buscador, setBuscador] = useState("");
   return (
     <Container>
       <Row>
-        <Col md={9}>
-          <Buscador />
+        <Col>
+          <Buscador buscador={buscador} setBuscador={setBuscador} />
         </Col>
+      </Row>
+      <Row>
         <Col>
           <Listado colaboradores={colaboradores} />
         </Col>
+
         <Col>
           <Formulario
+            setAlert={setAlert}
             setColaboradores={setColaboradores}
             colaboradores={colaboradores}
           />
+          {alert.msg !== "" && <Alerta alert={alert} />}
         </Col>
-
-        <Alerta />
       </Row>
     </Container>
   );

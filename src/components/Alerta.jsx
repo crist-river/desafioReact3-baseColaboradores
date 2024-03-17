@@ -1,10 +1,10 @@
 import Alert from 'react-bootstrap/Alert';
 
-const Alerta = () => {
+const Alerta = ({alert}) => {
   return (
       
-        <Alert key={variant} variant={variant}>
-          
+        <Alert variant={alert.color}>
+          {alert.msg}
         </Alert>
     
   );

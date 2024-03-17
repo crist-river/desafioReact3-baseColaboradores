@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const Formulario = ({colaboradores, setColaboradores}) => {
+const Formulario = ({colaboradores, setColaboradores, setAlert}) => {
   const [nuevoColaborador, setNuevoColaborador] = useState({
     nombre: "",
     email: "",
@@ -16,6 +16,7 @@ const Formulario = ({colaboradores, setColaboradores}) => {
 
       const colaborador_id={... nuevoColaborador, id: Date.now()}
       setColaboradores([...colaboradores, colaborador_id])
+      setAlert({msg:'Usuario agregado correctamente', color:'success'})
   }
 
   const cambioNuevoColaborador = (e) => {
