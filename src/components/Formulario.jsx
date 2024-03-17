@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 
 const Formulario = ({ colaboradores, setColaboradores, setAlert }) => {
   const [nuevoColaborador, setNuevoColaborador] = useState({
-    id:"",
+    id: "",
     nombre: "",
     email: "",
     edad: "",
@@ -25,24 +25,25 @@ const Formulario = ({ colaboradores, setColaboradores, setAlert }) => {
     const colaborador_id = { ...nuevoColaborador, id: Date.now() };
     setColaboradores([...colaboradores, colaborador_id]);
 
-
-    if(
-    nuevoColaborador.id !== "" ||
-    nuevoColaborador.nombre === "" ||
-    nuevoColaborador.email === "" ||
-    nuevoColaborador.edad === "" ||
-    nuevoColaborador.cargo === "" ||
-    nuevoColaborador.telefono === ""){
+    if (
+      nuevoColaborador.id !== "" ||
+      nuevoColaborador.nombre === "" ||
+      nuevoColaborador.email === "" ||
+      nuevoColaborador.edad === "" ||
+      nuevoColaborador.cargo === "" ||
+      nuevoColaborador.telefono === ""
+    ) {
       setAlert({
-              msg: "completa todos los campos requeridos",
-            color: "danger", })
-    }else{
+        msg: "completa todos los campos requeridos",
+        color: "danger",
+      });
+    } else {
       setAlert({ msg: "Usuario agregado correctamente", color: "success" });
-      {cambioNuevoColaborador}
+      {
+        cambioNuevoColaborador;
+      }
     }
   };
-
-
 
   return (
     <Form onSubmit={envioFormulario}>

@@ -1,12 +1,8 @@
-const Buscador = ({buscador, setBuscador}) => {
-
+const Buscador = ({ buscador, setBuscador }) => {
   const buscar = (e) => {
-    let value = e.target.value
-    setBuscador(value)
-
-
-
-  }
+    let value = e.target.value;
+    setBuscador(value);
+  };
   return (
     <div className=" d-flex m-2" role="search">
       <input
