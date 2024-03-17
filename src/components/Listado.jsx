@@ -1,34 +1,33 @@
-import Table from 'react-bootstrap/Table';
-import {baseColaboradores} from '../BaseColaboradores'
-import { useState } from 'react';
+import Table from "react-bootstrap/Table";
 
-
-
-const Listado = ()=> {
-
-  const [colaboradores, setColaboradores] = useState(baseColaboradores)
-
+const Listado = ({ colaboradores }) => {
   return (
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>#id</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Edad</th>
+          <th>Cargo</th>
+          <th>Telefono</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-
+        
+      { colaboradores.map((colaborador) => (
+            <tr key={colaborador.id}>
+              <td>{colaborador.id}</td>
+              <td>{colaborador.nombre}</td>
+              <td>{colaborador.correo}</td>
+              <td>{colaborador.edad}</td>
+              <td>{colaborador.cargo}</td>
+              <td>{colaborador.telefono}</td>
+            </tr>
+          ))}
       </tbody>
     </Table>
   );
-}
+};
 
 export default Listado;

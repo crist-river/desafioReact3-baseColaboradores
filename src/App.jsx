@@ -5,16 +5,18 @@ import Buscador from "./components/Buscador";
 import Formulario from "./components/Formulario";
 import Listado from "./components/Listado";
 import Alert from './components/Alert'
+import {baseColaboradores } from "./BaseColaboradores";
+import { useState } from "react";
 
 
 const App = () => {
 
-
+  const [colaboradores, setColaboradores] = useState(baseColaboradores)
   return (
     <>
       <Buscador />
-      <Listado />
-      <Formulario />
+      <Listado colaboradores = {colaboradores} />
+      <Formulario setColaboradores={setColaboradores}/>
       <Alert/>
     </>
   );
