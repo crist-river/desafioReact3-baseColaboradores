@@ -23,7 +23,6 @@ const Formulario = ({ colaboradores, setColaboradores, setAlert }) => {
     e.preventDefault();
 
     const colaborador_id = { ...nuevoColaborador, id: Date.now() };
-    setColaboradores([...colaboradores, colaborador_id]);
 
     if (
       nuevoColaborador.id !== "" ||
@@ -38,10 +37,16 @@ const Formulario = ({ colaboradores, setColaboradores, setAlert }) => {
         color: "danger",
       });
     } else {
+      setColaboradores([...colaboradores, colaborador_id]);
       setAlert({ msg: "Usuario agregado correctamente", color: "success" });
-      {
-        cambioNuevoColaborador;
-      }
+      setNuevoColaborador({
+        id: "",
+        nombre: "",
+        email: "",
+        edad: "",
+        cargo: "",
+        telefono: "",
+      });
     }
   };
 
